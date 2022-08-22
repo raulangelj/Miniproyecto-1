@@ -46,3 +46,8 @@ poisson_pmf(16, mu=7)
 
 poisson_cdf(16, mu=7)
 # %%
+# Ejercicio 2.2
+# Calcule y grafique la probabilidad para diferentes números de buses, yendo desde 0 hasta 100. ¿Cuál es la cantidad de buses más probable?
+poisson_pmf(100, mu=2)
+
+# %%
