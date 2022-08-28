@@ -9,6 +9,10 @@ from cProfile import label
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import poisson, gamma
+import random
+import math
+import statistics
+import matplotlib.pyplot as plt
 
 
 # %%
