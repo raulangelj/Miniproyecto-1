@@ -6,7 +6,7 @@ Donaldo Garcia 19683
 
 #%%
 from cProfile import label
-# import numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import poisson, gamma
 import random
