@@ -8,10 +8,11 @@ Donaldo Garcia 19683
 from cProfile import label
 # import numpy as np
 import matplotlib.pyplot as plt
-# from scipy.stats import poisson, gamma
+from scipy.stats import poisson, gamma
 import random
 import math
 import statistics
+from cmath import e
 
 
 # %%
@@ -84,6 +85,42 @@ poisson_cdf(16, mu=7)
 # Calcule y grafique la probabilidad para diferentes números de buses, yendo desde 0 hasta 100. ¿Cuál es la cantidad de buses más probable?
 poisson_pmf(100, mu=2)
 
+# %%
+# Ejercicio 3.1
+def tiempos_intermedios(self, t: int, to: int = None, mean: str = 5):
+	cdf_inversa = lambda t: -(math.log(1 - t) / mean)
+
+	if to is None:
+			return cdf_inversa(poisson.pmf(k=t, mu=mean)(t))
+
+	tab = [
+			cdf_inversa(
+					self.pmf(x)
+			)
+			for x in range(t, to + 1)
+	]
+
+	for i in range(len(tab)):
+			tab[i] = tab[i] + tab[i-1] if i > 0 else tab[i]
+
+	return tab
+
+print(tiempos_intermedios(1, 10))
+
+
+# %%
+# Ejercicio 3.2
+exp = lambda t: 1 - (e**(-5 * t))
+x = [i/100 for i in range(1, 100)]
+plt.scatter(x, [exp(i) for i in x])
+plt.show()
+
+# %%
+# Ejercicio 3.3
+x = range(1, 500 + 1)
+y = tiempos_intermedios(1, 500)
+plt.scatter(x, y)
+plt.show()
 
 # %%
 # Ejercicio 4.2
