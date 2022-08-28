@@ -6,13 +6,12 @@ Donaldo Garcia 19683
 
 #%%
 from cProfile import label
-import numpy as np
+# import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import poisson, gamma
+# from scipy.stats import poisson, gamma
 import random
 import math
 import statistics
-import matplotlib.pyplot as plt
 
 
 # %%
@@ -84,6 +83,34 @@ poisson_cdf(16, mu=7)
 # Ejercicio 2.2
 # Calcule y grafique la probabilidad para diferentes números de buses, yendo desde 0 hasta 100. ¿Cuál es la cantidad de buses más probable?
 poisson_pmf(100, mu=2)
+
+
+# %%
+# Ejercicio 4.2
+lambda_value = 5
+events = 100
+events_list = []
+times_interval = []
+times_to_event = []
+time_to_event = 0
+
+for i in range(events):
+	events_list.append(i)
+	n = random.random()
+
+	_inter_event_time = -math.log(1.0 - n) / lambda_value
+	times_interval.append(_inter_event_time)
+
+	time_to_event = time_to_event + _inter_event_time
+	times_to_event.append(time_to_event)
+
+fig = plt.figure()
+fig.suptitle('Times Poisson process')
+plot, = plt.plot(events_list, times_interval, 'bo-', label='Inter-event time')
+plt.legend(handles=[plot])
+plt.xlabel('Index of event')
+plt.ylabel('Time')
+plt.show()
 
 # %%
 # Ejercicio 5.1
